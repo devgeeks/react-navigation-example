@@ -1,25 +1,25 @@
-# React Hot Reloading Template
+# React Navigation Example
 
-React.js Cordova / PhoneGap Template with Babel, Webpack and Hot Reloading
+React.js Cordova / PhoneGap Template / App for testing ideas on page navigation and animation
 
 ## Getting Started
 
 ### Prerequisites
 
-To use this template, you'll need Node.js v4 or newer.
+To play with this app, you'll need Node.js v4 or newer.
 
 ### Installation
 
 To use this as a template, use Cordova 6.0.0+ and create a new project:
 
 ```
-cordova create MyAppName --template=phonegap-template-react-hot-loader
+cordova create MyAppName --template=https://github.com/devgeeks/react-navigation-example
 ```
 
 or
 
 ```
-phonegap create MyAppName --template react-hot-loader
+phonegap create MyAppName --template https://github.com/devgeeks/react-navigation-example
 ```
 
 then
