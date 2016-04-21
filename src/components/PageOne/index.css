@@ -1,0 +1,31 @@
+.one {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.one h1 {
+  text-align: center;
+  padding: 16px;
+}
+
+.one .button {
+  position: relative;
+  display: inline-block;
+  padding: 8px;
+  border: 1px solid;
+  border-color: inherit;
+  text-align: center;
+  left: 50%;
+  min-width: 100px;
+  transform: translate(-50%, 0);
+}
+
+.one .button.tappable-active {
+  background: #CFD8DC;
+  color: #263238;
+}
