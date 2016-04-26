@@ -107,6 +107,7 @@ function slideLeftOut(action, component, done) {
 }
 
 export function slideLeft(component, options, done) {
+  console.log(component);
   const { action, direction } = options;
   if (direction === 'in') {
     slideLeftIn(action, component, done);

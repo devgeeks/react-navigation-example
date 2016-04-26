@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import Tappable from 'react-tappable';
-import { slideLeft } from 'utils/Animations';
+
+import page from 'components/Page';
 
 import './index.css';
 
-export default React.createClass({
+const PageOne = React.createClass({
 
   displayName: 'PageOne',
 
@@ -13,65 +14,28 @@ export default React.createClass({
     children: PropTypes.object,
     direction: PropTypes.string,
     location: PropTypes.object,
+    setAction: React.PropTypes.func,
+    style: PropTypes.object,
   },
 
   contextTypes: {
     router: React.PropTypes.object.isRequired,
   },
 
-  getInitialState() {
-    const { direction } = this.props;
-    return {
-      action: direction || 'pop',
-      style: {},
-    };
-  },
-
-  componentWillLeave(done) {
-    const { action } = this.state;
-    slideLeft(this, {
-      action,
-      direction: 'out',
-    }, done);
-  },
-
-  componentDidLeave() {
-    // reset to default
-    this.setState({
-      action: 'pop',
-    });
-  },
-
-  componentWillEnter(done) {
-    const { action } = this.state;
-    slideLeft(this, {
-      action,
-      direction: 'in',
-    }, done);
-  },
-
-  componentDidEnter() {
-    // reset to default
-    this.setState({
-      action: 'pop',
-    });
-  },
-
   handleButtonClick() {
     const { router } = this.context;
-    this.setState({
-      action: 'push',
-    });
+    const { setAction } = this.props;
+    setAction('push');
     router.push('/two');
   },
 
   render() {
+    const { style } = this.props;
     const cx = classNames({
       one: true,
       'default-primary-color': true,
       'text-primary-color': true,
     });
-    const { style } = this.state;
 
     return (
       <div className={ cx } style={ style }>
@@ -85,3 +49,5 @@ export default React.createClass({
     );
   },
 });
+
+export default page(PageOne);

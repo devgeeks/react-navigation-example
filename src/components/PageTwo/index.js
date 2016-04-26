@@ -1,83 +1,48 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import Tappable from 'react-tappable';
-import { slideLeft } from 'utils/Animations';
+
+import page from 'components/Page';
 
 import './index.css';
 
-export default React.createClass({
+const PageTwo = React.createClass({
 
   displayName: 'PageTwo',
 
   propTypes: {
+    children: PropTypes.object,
     direction: PropTypes.string,
+    location: PropTypes.object,
+    setAction: React.PropTypes.func,
+    style: PropTypes.object,
   },
 
   contextTypes: {
     router: React.PropTypes.object.isRequired,
   },
 
-  getInitialState() {
-    const { direction } = this.props;
-    return {
-      action: direction,
-      style: {},
-    };
-  },
-
-  componentWillLeave(done) {
-    const { action } = this.state;
-    slideLeft(this, {
-      action,
-      direction: 'out',
-    }, done);
-  },
-
-  componentDidLeave() {
-    // reset to default
-    this.setState({
-      action: 'pop',
-    });
-  },
-
-  componentWillEnter(done) {
-    const { action } = this.state;
-    slideLeft(this, {
-      action,
-      direction: 'in',
-    }, done);
-  },
-
-  componentDidEnter() {
-    // reset to default
-    this.setState({
-      action: 'pop',
-    });
-  },
-
   handleBackButtonClick() {
     const { router } = this.context;
-    this.setState({
-      action: 'pop',
-    });
+    const { setAction } = this.props;
+    setAction('pop');
     router.goBack();
   },
 
   handleButtonClick() {
     const { router } = this.context;
-    this.setState({
-      action: 'push',
-    });
+    const { setAction } = this.props;
+    setAction('push');
     router.push('/three');
   },
 
   render() {
+    const { style } = this.props;
     const cx = classNames({
       two: true,
       'accent-color': true,
       'text-primary-color': true,
     });
-    const { style } = this.state;
 
     return (
       <div className={ cx } style={ style }>
@@ -97,3 +62,5 @@ export default React.createClass({
     );
   },
 });
+
+export default page(PageTwo);
