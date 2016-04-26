@@ -11,7 +11,6 @@ const PageOne = React.createClass({
   displayName: 'PageOne',
 
   propTypes: {
-    direction: PropTypes.string,
     setAction: React.PropTypes.func,
     style: PropTypes.object,
   },

@@ -5,9 +5,7 @@ export default function (InnerPage) {
   return React.createClass({
 
     propTypes: {
-      children: React.PropTypes.object,
       direction: React.PropTypes.string,
-      location: React.PropTypes.object,
     },
 
     getInitialState() {
